@@ -158,6 +158,8 @@ Vagrant.configure("2") do |config|
         config.vm.provision :shell, :inline => "mv /tmp/vagrantfile-user-data /var/lib/coreos-vagrant/", :privileged => true
       end
 
+      config.vm.provision :file, :source => "data", :destination => "/tmp/data"
+      
       config.vm.provider :virtualbox do |vb|
         config.ignition.hostname = vm_name
         config.ignition.drive_name = "config" + i.to_s
